@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Publications by Wei Qian in trustworthy machine learning, machine unlearning, privacy, robustness, uncertainty, and explainability.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Publications · Wei Qian</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2317212b'/%3E%3Ctext x='32' y='42' font-size='30' text-anchor='middle' fill='white' font-family='Arial,sans-serif'%3EWQ%3C/text%3E%3C/svg%3E">
+  <style>
+:root {
+  --ink: #17212b;
+  --body: #354252;
+  --muted: #69737e;
+  --accent: #1f5d8f;
+  --line: #dfe4e8;
+  --soft: #f6f8f9;
+  --page: #ffffff;
+  --width: 960px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--page);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 3px solid rgba(31, 93, 143, .25); outline-offset: 3px; border-radius: 2px; }
+img { display: block; max-width: 100%; }
+.container { width: min(calc(100% - 40px), var(--width)); margin-inline: auto; }
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 10;
+  padding: 9px 13px;
+  color: white;
+  background: var(--ink);
+  text-decoration: none;
+  border-radius: 4px;
+}
+.skip-link:focus { top: 12px; }
+
+.site-header { border-bottom: 1px solid var(--line); background: var(--page); }
+.nav {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+.name {
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 9px 22px; }
+nav a { color: var(--muted); font-size: .94rem; text-decoration: none; }
+nav a:hover,
+nav a[aria-current="page"] { color: var(--ink); }
+
+main { padding: 0 0 18px; }
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 210px;
+  align-items: center;
+  gap: 60px;
+  padding: 72px 0 68px;
+  border-top: 0;
+}
+.intro h1,
+.page-header h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -.025em;
+}
+.intro h1 { font-size: clamp(2.8rem, 7vw, 4.4rem); }
+.role { margin: 10px 0 20px; color: var(--accent); font-weight: 650; }
+.lead { max-width: 650px; margin: 0; color: var(--body); font-size: 1.09rem; }
+.profile-links { display: flex; flex-wrap: wrap; gap: 7px 12px; margin: 24px 0 0; font-weight: 650; }
+.profile-links span { color: #a1a8af; }
+.portrait {
+  width: 210px;
+  height: 210px;
+  object-fit: cover;
+  object-position: 50% 34%;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+}
+
+section { padding: 48px 0; border-top: 1px solid var(--line); }
+.section-grid { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 44px; }
+h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+h3 { margin: 0 0 13px; font-size: 1rem; line-height: 1.4; }
+.content p { color: var(--body); }
+.content > :first-child { margin-top: 0; }
+.content > :last-child { margin-bottom: 0; }
+.research-interests { margin-top: 22px; }
+
+.publication-list,
+.full-publication-list,
+.plain-list { margin: 0; padding: 0; list-style: none; }
+.publication-list { counter-reset: selected-publications; }
+.publication-list > li {
+  counter-increment: selected-publications;
+  position: relative;
+  padding: 0 0 25px 38px;
+  margin: 0 0 25px;
+  border-bottom: 1px solid var(--line);
+}
+.publication-list > li::before {
+  content: counter(selected-publications) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.publication-list > li:last-child { margin-bottom: 17px; }
+.pub-title { margin: 0 0 5px; color: var(--ink); font-size: 1rem; font-weight: 650; line-height: 1.45; }
+.pub-title a { color: inherit; text-decoration: none; }
+.pub-title a:hover { color: var(--accent); text-decoration: underline; }
+.pub-authors,
+.pub-venue { margin: 0; color: var(--muted); font-size: .94rem; line-height: 1.55; }
+.pub-venue { margin-top: 3px; color: var(--accent); font-weight: 650; }
+.section-actions { margin: 0; font-weight: 650; }
+.note { color: var(--muted); font-size: .92rem; }
+
+.plain-list li { margin: 0 0 15px; color: var(--body); }
+.plain-list li:last-child { margin-bottom: 0; }
+.plain-list strong { color: var(--ink); }
+.compact-list li { margin-bottom: 11px; }
+.subsection-heading { margin-top: 30px; }
+.contact { font-style: normal; color: var(--body); }
+.contact p { margin: 0 0 5px; }
+
+.publications-page { padding-top: 62px; }
+.page-header { padding: 0 0 50px; }
+.page-header h1 { font-size: clamp(2.5rem, 6vw, 3.8rem); }
+.page-header > p:last-child { max-width: 720px; margin: 14px 0 0; color: var(--body); font-size: 1.04rem; }
+.eyebrow { margin: 0 0 16px; font-size: .92rem; }
+.eyebrow a { color: var(--muted); text-decoration: none; }
+.eyebrow a:hover { color: var(--accent); text-decoration: underline; }
+.year-groups { display: grid; gap: 34px; }
+.year-group h3 {
+  padding-bottom: 9px;
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: .94rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--line);
+}
+.full-publication-list > li { padding: 0 0 22px; margin: 0 0 22px; border-bottom: 1px solid var(--line); }
+.full-publication-list > li:last-child { margin-bottom: 0; }
+
+footer { padding: 30px 0 44px; color: var(--muted); font-size: .9rem; text-align: center; }
+footer p { margin: 0; }
+
+@media (max-width: 740px) {
+  .container { width: min(calc(100% - 28px), var(--width)); }
+  .nav { min-height: auto; padding: 17px 0; align-items: flex-start; }
+  nav { gap: 8px 14px; }
+  .intro { grid-template-columns: 1fr; gap: 30px; padding: 48px 0; }
+  .portrait { grid-row: 1; width: 160px; height: 160px; }
+  .intro-copy { grid-row: 2; }
+  .section-grid { grid-template-columns: 1fr; gap: 22px; }
+  section { padding: 40px 0; }
+  .publications-page { padding-top: 42px; }
+}
+
+@media (max-width: 540px) {
+  .nav { display: block; }
+  nav { justify-content: flex-start; margin-top: 10px; }
+  .intro h1 { font-size: 2.8rem; }
+  .publication-list > li { padding-left: 31px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+@media print {
+  .site-header,
+  .skip-link,
+  .profile-links,
+  .section-actions,
+  footer { display: none; }
+  body { color: #000; font-size: 11pt; }
+  .container { width: 100%; }
+  .intro { padding: 0 0 24px; }
+  section { break-inside: avoid; padding: 22px 0; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="name" href="index.html">Wei Qian</a>
+      <nav aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="publications.html" aria-current="page">Publications</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container publications-page">
+    <header class="page-header">
+      <p class="eyebrow"><a href="index.html">← Back to homepage</a></p>
+      <h1>Publications</h1>
+      <p>For citation counts and the latest updates, visit <a href="https://scholar.google.com/citations?hl=en&amp;user=n1gDJZQAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>.</p>
+    </header>
+
+    <section aria-labelledby="conference-heading">
+      <div class="section-grid">
+        <h2 id="conference-heading">Conference Papers</h2>
+        <div class="year-groups">
+          <div class="year-group">
+            <h3>2026</h3>
+            <ol class="full-publication-list">
+              <li>
+                <p class="pub-title"><a href="https://arxiv.org/abs/2604.03571" target="_blank" rel="noopener noreferrer">Selective Forgetting for Large Reasoning Models</a></p>
+                <p class="pub-authors">Tuan Le, <strong>Wei Qian</strong>, Mengdi Huai</p>
+                <p class="pub-venue">PAKDD 2026 · Hong Kong, China</p>
+              </li>
+              <li>
+                <p class="pub-title"><a href="https://doi.org/10.1007/978-981-92-1462-4_4" target="_blank" rel="noopener noreferrer">Rethinking Unlearnable Examples in the Context of the Right to be Forgotten</a></p>
+                <p class="pub-authors">Chenxu Zhao, <strong>Wei Qian</strong>, Chenglin Miao, Mengdi Huai</p>
+                <p class="pub-venue">PAKDD 2026 · Hong Kong, China</p>
+              </li>
+              <li>
+                <p class="pub-title"><a href="https://arxiv.org/abs/2512.18035" target="_blank" rel="noopener noreferrer">Towards Benchmarking Privacy Vulnerabilities in Selective Forgetting with Large Language Models</a></p>
+                <p class="pub-authors"><strong>Wei Qian*</strong>, Chenxu Zhao*, Yangyi Li, Mengdi Huai</p>
+                <p class="pub-venue">AAAI 2026 · Singapore</p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="year-group">
+            <h3>2025</h3>
+            <ol class="full-publication-list">
+              <li>
+                <p class="pub-title"><a href="https://arxiv.org/abs/2508.07458" target="_blank" rel="noopener noreferrer">Towards Unveiling Predictive Uncertainty Vulnerabilities in the Context of the Right to Be Forgotten</a></p>
+                <p class="pub-authors"><strong>Wei Qian*</strong>, Chenxu Zhao*, Yangyi Li, Wenqian Ye, Mengdi Huai</p>
+                <p class="pub-venue">CIKM 2025 · Seoul, South Korea</p>
+              </li>
+              <li>
+                <p class="pub-title"><a href="https://openaccess.thecvf.com/content/ICCV2025/html/Zhao_Membership_Inference_Attacks_with_False_Discovery_Rate_Control_ICCV_2025_paper.html" target="_blank" rel="noopener noreferrer">Membership Inference Attacks with False Discovery Rate Control</a></p>
+                <p class="pub-authors">Chenxu Zhao, <strong>Wei Qian</strong>, Aobo Chen, Mengdi Huai</p>
+                <p class="pub-venue">ICCV 2025 · Honolulu, Hawaii, USA</p>
+              </li>
+              <li>
+                <p class="pub-title"><a href="https://ojs.aaai.org/index.php/AAAI/article/view/35270" target="_blank" rel="noopener noreferrer">Neuron Explanations for Conformal Prediction (Student Abstract)</a></p>
+                <p class="pub-authors">Divya Lidder, Kathryn Morse, Bridget Sullivan, <strong>Wei Qian</strong>, Chenglin Miao, Mengdi Huai</p>
+                <p class="pub-venue">AAAI 2025 · Philadelphia, USA</p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="year-group">
+            <h3>2024</h3>
+            <ol class="full-publication-list">
+              <li>
+                <p class="pub-title"><a href="https://papers.miccai.org/miccai-2024/529-Paper1623.html" target="_blank" rel="noopener noreferrer">Modeling and Understanding Uncertainty in Medical Image Classification</a></p>
+                <p class="pub-authors">Aobo Chen, Yangyi Li, <strong>Wei Qian</strong>, Kathryn Morse, Chenglin Miao, Mengdi Huai</p>
+                <p class="pub-venue">MICCAI 2024 · Marrakesh, Morocco</p>
+              </li>
+              <li>
+                <p class="pub-title"><a href="https://proceedings.mlr.press/v235/zhao24k.html" target="_blank" rel="noopener noreferrer">Rethinking Adversarial Robustness in the Context of the Right to be Forgotten</a></p>
+                <p class="pub-authors">Chenxu Zhao*, <strong>Wei Qian*</strong>, Yangyi Li, Aobo Chen, Mengdi Huai</p>
+                <p class="pub-venue">ICML 2024 · Vienna, Austria</p>
+              </li>
+              <li>
+                <p class="pub-title"><a href="https://proceedings.mlr.press/v235/li24l.html" target="_blank" rel="noopener noreferrer">Data Poisoning Attacks against Conformal Prediction</a></p>
+                <p class="pub-authors">Yangyi Li, Aobo Chen, <strong>Wei Qian</strong>, Chenxu Zhao, Divya Lidder, Mengdi Huai</p>
+                <p class="pub-venue">ICML 2024 · Vienna, Austria</p>
+              </li>
+              <li>
+                <p class="pub-title"><a href="https://ojs.aaai.org/index.php/AAAI/article/view/29382" target="_blank" rel="noopener noreferrer">Towards Modeling Uncertainties of Self-explaining Neural Networks via Conformal Prediction</a></p>
+                <p class="pub-authors"><strong>Wei Qian*</strong>, Chenxu Zhao*, Yangyi Li*, Fenglong Ma, Chao Zhang, Mengdi Huai</p>
+                <p class="pub-venue">AAAI 2024 · Vancouver, Canada</p>
+              </li>
+              <li>
+                <p class="pub-title"><a href="https://arxiv.org/abs/2310.10708" target="_blank" rel="noopener noreferrer">Automated Natural Language Explanation of Deep Visual Neurons with Large Models (Student Abstract)</a></p>
+                <p class="pub-authors">Chenxu Zhao, <strong>Wei Qian</strong>, Yucheng Shi, Mengdi Huai, Ninghao Liu</p>
+                <p class="pub-venue">AAAI 2024 · Vancouver, Canada</p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="year-group">
+            <h3>2023</h3>
+            <ol class="full-publication-list">
+              <li>
+                <p class="pub-title"><a href="https://proceedings.neurips.cc/paper_files/paper/2023/hash/ed4bacc8c7ca1ee0e1d4e0ef376b7ac7-Abstract-Conference.html" target="_blank" rel="noopener noreferrer">Static and Sequential Malicious Attacks in the Context of Selective Forgetting</a></p>
+                <p class="pub-authors">Chenxu Zhao*, <strong>Wei Qian*</strong>, Zhitao Ying, Mengdi Huai</p>
+                <p class="pub-venue">NeurIPS 2023 · New Orleans, USA</p>
+              </li>
+              <li>
+                <p class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3580305.3599526" target="_blank" rel="noopener noreferrer">Towards Understanding and Enhancing Robustness of Deep Learning Models against Malicious Unlearning Attacks</a></p>
+                <p class="pub-authors"><strong>Wei Qian*</strong>, Chenxu Zhao*, Wei Le, Meiyi Ma, Mengdi Huai</p>
+                <p class="pub-venue">KDD 2023 · Long Beach, USA</p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="year-group">
+            <h3>2022</h3>
+            <ol class="full-publication-list">
+              <li>
+                <p class="pub-title"><a href="https://mdhuai.github.io/papers/BIBM2022Wei.pdf" target="_blank" rel="noopener noreferrer">Patient Similarity Learning with Selective Forgetting</a></p>
+                <p class="pub-authors"><strong>Wei Qian</strong>, Chenxu Zhao, Huajie Shao, Minghan Chen, Fei Wang, Mengdi Huai</p>
+                <p class="pub-venue">BIBM 2022 · Las Vegas, USA</p>
+              </li>
+              <li>
+                <p class="pub-title"><a href="https://sc22.supercomputing.org/proceedings/tech_paper/tech_paper_pages/pap127.html" target="_blank" rel="noopener noreferrer">SPATL: Salient Parameter Aggregation and Transfer Learning for Heterogeneous Federated Learning</a></p>
+                <p class="pub-authors">Sixing Yu, Phuong Nguyen, Waqwoya Abebe, <strong>Wei Qian</strong>, Ali Anwar, Ali Jannesari</p>
+                <p class="pub-venue">SC 2022 · Dallas, USA</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="tutorial-heading">
+      <div class="section-grid">
+        <h2 id="tutorial-heading">Tutorial</h2>
+        <ol class="full-publication-list">
+          <li>
+            <p class="pub-title"><a href="https://awzstm.github.io/Data_Security_and_Privacy_in_Machine_Unlearning_Tutorial/" target="_blank" rel="noopener noreferrer">Data Security and Privacy in Machine Unlearning: Recent Advances, Challenges, and Future Perspectives</a></p>
+            <p class="pub-authors">Aobo Chen, <strong>Wei Qian</strong>, Zheyuan Liu, Shagufta Mehnaz, Tianhao Wang, Mengdi Huai</p>
+            <p class="pub-venue">ICDM 2025 Tutorial · Washington, DC, USA</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section aria-labelledby="preprint-heading">
+      <div class="section-grid">
+        <h2 id="preprint-heading">Preprints</h2>
+        <div>
+          <ol class="full-publication-list">
+            <li>
+              <p class="pub-title"><a href="https://arxiv.org/abs/2405.16798" target="_blank" rel="noopener noreferrer">Exploring Fairness in Educational Data Mining in the Context of the Right to be Forgotten</a></p>
+              <p class="pub-authors"><strong>Wei Qian*</strong>, Aobo Chen*, Chenxu Zhao, Yangyi Li, Mengdi Huai</p>
+              <p class="pub-venue">arXiv, 2024</p>
+            </li>
+            <li>
+              <p class="pub-title"><a href="https://arxiv.org/abs/2310.10708" target="_blank" rel="noopener noreferrer">Automated Natural Language Explanation of Deep Visual Neurons with Large Models</a></p>
+              <p class="pub-authors">Chenxu Zhao, <strong>Wei Qian</strong>, Yucheng Shi, Mengdi Huai, Ninghao Liu</p>
+              <p class="pub-venue">arXiv, 2023</p>
+            </li>
+            <li>
+              <p class="pub-title"><a href="https://arxiv.org/abs/2208.07978" target="_blank" rel="noopener noreferrer">Resource-Aware Federated Learning Using Knowledge Extraction and Multi-Model Fusion</a></p>
+              <p class="pub-authors">Sixing Yu, <strong>Wei Qian</strong>, Ali Jannesari</p>
+              <p class="pub-venue">arXiv, 2022</p>
+            </li>
+          </ol>
+          <p class="note">* Equal contribution.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p>© 2026 Wei Qian · <a href="index.html">Home</a></p>
+  </footer>
+</body>
+</html>
